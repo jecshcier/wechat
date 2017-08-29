@@ -2,6 +2,9 @@ var config = process.cwd() + '/config'
 var wechat = require('wechat')
 module.exports = wechat(config.wechatConfig, function(req, res, next) {
     // 微信输入信息都在req.weixin上
+    console.log("Test11111");
+    console.log(config.serverDomain)
+
     var message = req.weixin;
     if (message.Content === "七夕") {
         res.reply([{
@@ -11,7 +14,6 @@ module.exports = wechat(config.wechatConfig, function(req, res, next) {
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     } else {
-        console.log(config)
         res.reply(config.serverDomain);
     }
     // if (message.FromUserName === 'diaosi') {
