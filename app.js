@@ -27,6 +27,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(config.serverName + config.staticPathName, express.static(path.join(__dirname, 'public')));
+console.log(path.join(__dirname, 'public'))
+
 // console.log(express.static(path.join(__dirname, 'public')))
 console.log(path.resolve(__dirname, sourcePath))
 app.use(config.serverName + config.sourcePathName, express.static(sourcePath));
