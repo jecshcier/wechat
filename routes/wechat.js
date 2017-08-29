@@ -3,9 +3,7 @@ var wechat = require('wechat')
 var picurl = config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png'
 module.exports = wechat(config.wechatConfig, function(req, res, next) {
     // 微信输入信息都在req.weixin上
-    console.log("Test11111");
-    console.log(config.serverDomain)
-
+    console.log(picurl)
     var message = req.weixin;
     if (message.Content === "七夕") {
         res.reply([{
