@@ -1,3 +1,9 @@
 {
-    "serverName":"/wechat"
+    "serverName":"/wechat",
+    "wechatConfig":{
+        "token": "jecshcierWeixin",
+        "appid": "wx0fd1c0b003749f35",
+        "encodingAESKey": "FFmeKxDXTaa1b4Os62hbZgl9yQFPDiM0ZDzFNtN3VaQ",
+        "checkSignature": true
+    }
 }

@@ -1,5 +1,8 @@
+var config = process.cwd() + '/config'
 var wechat = require('wechat')
+var config = config.wechatConfig
 module.exports = wechat(config, function(req, res, next) {
+    console.log('test')
     // 微信输入信息都在req.weixin上
     var message = req.weixin;
     if (message.FromUserName === 'diaosi') {
