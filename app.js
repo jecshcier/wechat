@@ -29,9 +29,9 @@ app.use(cookieParser());
 app.use(config.serverName + config.staticPathName, express.static(path.join(__dirname, 'public')));
 // console.log(express.static(path.join(__dirname, 'public')))
 console.log(path.resolve(__dirname, sourcePath))
-app.use(config.serverName + config.sourcePathName, express.static(path.resolve(__dirname, sourcePath)));
+app.use(config.serverName + config.sourcePathName, express.static(sourcePath));
 app.use(express.query());
-
+console.log(config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png')
 app.use(config.serverName + '/test', index);
 // app.use(config.serverName + '/users', users);
 
