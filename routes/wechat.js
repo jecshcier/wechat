@@ -11,7 +11,7 @@ module.exports = wechat(config.wechatConfig, function(req, res, next) {
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     } else {
-        console.log(config.serverDomain)
+        console.log(config)
         res.reply(config.serverDomain);
     }
     // if (message.FromUserName === 'diaosi') {
