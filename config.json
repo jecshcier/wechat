@@ -7,6 +7,7 @@
         "encodingAESKey": "FFmeKxDXTaa1b4Os62hbZgl9yQFPDiM0ZDzFNtN3VaQ",
         "checkSignature": true
     },
+    "staticPathName":"/static",
     "sourceRealPath":null,
     "sourcePathName":"/resources"
 }

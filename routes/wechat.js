@@ -7,7 +7,7 @@ module.exports = wechat(config.wechatConfig, function(req, res, next) {
         res.reply([{
             title: '测测你七夕的对象是谁？',
             description: '来玩吧！',
-            picurl: config.serverDomain + config.serverName + config.sourcePathName + '/1.png',
+            picurl: config.serverDomain + config.serverName + config.sourcePathName + 'images/1.png',
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     } else {

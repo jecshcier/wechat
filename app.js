@@ -26,13 +26,15 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(config.serverName + config.sourcePathName, express.static(path.join(__dirname, sourcePath)));
+app.use(config.serverName + config.staticPathName, express.static(path.join(__dirname, 'public')));
+// console.log(express.static(path.join(__dirname, 'public')))
+console.log(path.resolve(__dirname, sourcePath))
+app.use(config.serverName + config.sourcePathName, express.static(path.resolve(__dirname, sourcePath)));
+app.use(express.query());
 
 app.use(config.serverName + '/test', index);
 // app.use(config.serverName + '/users', users);
 
-app.use(express.query());
 app.use('/wechat', wechatModual)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
