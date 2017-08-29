@@ -1,8 +1,6 @@
-// var config = process.cwd() + '/config'
+var config = process.cwd() + '/config'
 var wechat = require('wechat')
-// var picurl = config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png'
-// console.log("-----------------test------------")
-// console.log(picurl)
+
 module.exports = wechat(config.wechatConfig, function(req, res, next) {
     // 微信输入信息都在req.weixin上
     console.log(picurl)
@@ -11,11 +9,11 @@ module.exports = wechat(config.wechatConfig, function(req, res, next) {
         res.reply([{
             title: '测测你七夕的对象是谁？',
             description: '来玩吧！',
-            picurl: picurl,
+            picurl: "http://cshayne.ga/wechat/source/images/1.png",
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     } else {
-        res.reply("测试");
+        res.reply(JSON.stringify(message));
     }
     // if (message.FromUserName === 'diaosi') {
     //     // 回复屌丝(普通回复)
