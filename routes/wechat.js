@@ -1,8 +1,8 @@
-var config = process.cwd() + '/config'
-var wechat = require('wechat')
-var picurl = config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png'
-console.log("-----------------test------------")
-console.log(picurl)
+// var config = process.cwd() + '/config'
+// var wechat = require('wechat')
+// var picurl = config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png'
+// console.log("-----------------test------------")
+// console.log(picurl)
 module.exports = wechat(config.wechatConfig, function(req, res, next) {
     // 微信输入信息都在req.weixin上
     console.log(picurl)
