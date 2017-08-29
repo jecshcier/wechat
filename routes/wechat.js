@@ -1,16 +1,17 @@
 var config = process.cwd() + '/config'
 var wechat = require('wechat')
+var picurl = config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png'
+console.log("-----------------test------------")
+console.log(picurl)
 module.exports = wechat(config.wechatConfig, function(req, res, next) {
     // 微信输入信息都在req.weixin上
-    var newconfig = process.cwd() + '/config'
-    console.log("--------------------------test");
-    console.log(newconfig.serverDomain)
+    console.log(picurl)
     var message = req.weixin;
     if (message.Content === "七夕") {
         res.reply([{
             title: '测测你七夕的对象是谁？',
             description: '来玩吧！',
-            picurl: newconfig.serverDomain + newconfig.serverName + newconfig.sourcePathName + '/images/1.png',
+            picurl: picurl,
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     } else {
