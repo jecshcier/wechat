@@ -11,7 +11,7 @@ module.exports = wechat(config.wechatConfig, function(req, res, next) {
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     } else {
-        res.reply(JSON.stringify(message));
+        res.reply('<a href="' + config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png">查看图片</a>');
     }
     // if (message.FromUserName === 'diaosi') {
     //     // 回复屌丝(普通回复)
