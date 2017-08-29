@@ -7,9 +7,16 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var wechatModual = require('./routes/wechat')
 var config = require('./config')
 
 var app = express();
+var config = {
+    token: 'jecshcierWeixin',
+    appid: 'wx0fd1c0b003749f35',
+    encodingAESKey: 'FFmeKxDXTaa1b4Os62hbZgl9yQFPDiM0ZDzFNtN3VaQ',
+    checkSignature: true // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,9 +30,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(config.serverName + '/', index);
-app.use(config.serverName + '/users', users);
+// app.use(config.serverName + '/', index);
+// app.use(config.serverName + '/users', users);
 
+app.use(express.query());
+app.use('/wechat',wechatModual)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
