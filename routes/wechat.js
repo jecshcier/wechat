@@ -1,33 +1,44 @@
-var config = require(process.cwd() + '/config')
-var wechat = require('wechat')
-var List = require('wechat').List;
+const config = require(process.cwd() + '/config')
+const wechat = require('wechat')
+const List = require('wechat').List;
+let userData = {};
 List.add('view', [
-  ['回复{七夕}查看我的性别', function (info, req, res) {
-    res.reply('我是个妹纸哟');
-  }],
-  ['\n回复{b}查看我的年龄', function (info, req, res) {
-    res.reply('我今年18岁');
-  }],
-  ['\n回复{c}查看我的性取向', '这样的事情怎么好意思告诉你啦- -']
-]);
-module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
-    // 微信输入信息都在req.weixin上
-    console.log(res)
-    var message = req.weixin;
-    if (message.Content === "七夕") {
+    ['您好！阿C很高兴为您服务！\n\n-回复 {七夕} 查看 ->\n《测测你七夕的对象是谁》\n', function(info, req, res) {
         res.reply([{
             title: '测测你七夕的对象是谁？',
             description: '来玩吧！',
             picurl: config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png',
             url: 'http://cshayne.ga/77source/77.html'
         }]);
-    } else if (message.Content === "数据测试") {
-        res.reply(JSON.stringify(message));
-    } else if (message.Content === "菜单测试") {
-        res.wait('view');
-    } else {
-        res.reply("说的什么玩意？");
-    }
+    }],
+    ['\n-回复{数据测试}查看测试数据', function(info, req, res) {
+        res.reply(JSON.stringify(info));
+    }],
+    ['\n-回复{数字}来获取你今天的幸运数字', function(info, req, res) {
+        let today = new Date().toLocaleDateString();
+        // info.FromUserName
+        res.reply(today);
+    }]
+]);
+module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
+    // 微信输入信息都在req.weixin上
+    res.wait('view');
+    // console.log(res)
+    // var message = req.weixin;
+    // if (message.Content === "七夕") {
+    //     res.reply([{
+    //         title: '测测你七夕的对象是谁？',
+    //         description: '来玩吧！',
+    //         picurl: config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png',
+    //         url: 'http://cshayne.ga/77source/77.html'
+    //     }]);
+    // } else if (message.Content === "数据测试") {
+    //     res.reply(JSON.stringify(message));
+    // } else if (message.Content === "菜单测试") {
+    //
+    // } else {
+    //     res.reply("说的什么玩意？");
+    // }
     // if (message.FromUserName === 'diaosi') {
     //     // 回复屌丝(普通回复)
     //     res.reply('hehe');
