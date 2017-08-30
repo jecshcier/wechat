@@ -11,13 +11,24 @@ List.add('view', [
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     }],
-    ['\n-回复{数据测试}查看测试数据', function(info, req, res) {
+    ['\n-回复 {数据测试} 查看测试数据', function(info, req, res) {
         res.reply(JSON.stringify(info));
     }],
-    ['\n-回复{数字}来获取你今天的幸运数字', function(info, req, res) {
+    ['\n-回复 {数字} 来获取你今天的幸运数字', function(info, req, res) {
         let today = new Date().toLocaleDateString();
-        // info.FromUserName
-        res.reply(today);
+        if (!userData.hasOwnProperty(info.FromUserName)) {
+            userData[info.FromUserName] = {}
+            userData[info.FromUserName].updateTime = today;
+            userData[info.FromUserName].fortunNum = parseInt(Math.random() * 10);
+        }
+        else {
+            if (userData[info.FromUserName].updateTime !== today) {
+                userData[info.FromUserName].updateTime = today;
+                userData[info.FromUserName].fortunNum = parseInt(Math.random() * 10);
+            }
+        }
+        res.reply(userData[info.FromUserName].fortunNum);
+        console.log(userData)
     }]
 ]);
 module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
