@@ -1,6 +1,6 @@
 var config = require(process.cwd() + '/config')
 var wechat = require('wechat')
-module.exports = wechat(config.wechatConfig, function(req, res, next) {
+module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
     // 微信输入信息都在req.weixin上
 
     var message = req.weixin;
@@ -11,10 +11,10 @@ module.exports = wechat(config.wechatConfig, function(req, res, next) {
             picurl: config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png',
             url: 'http://cshayne.ga/77source/77.html'
         }]);
-    } else if(message.Content === "数据测试"){
+    } else if (message.Content === "数据测试") {
         res.reply(JSON.stringify(message));
-    }else {
-
+    } else {
+        res.reply("说的什么玩意？");
     }
     // if (message.FromUserName === 'diaosi') {
     //     // 回复屌丝(普通回复)
@@ -46,4 +46,107 @@ module.exports = wechat(config.wechatConfig, function(req, res, next) {
     //         url: 'http://nodeapi.cloudfoundry.com/'
     //     }]);
     // }
-})
+}).image(function(message, req, res, next) {
+    res.reply(JSON.stringify(message));
+    // message为图片内容
+    // { ToUserName: 'gh_d3e07d51b513',
+    // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
+    // CreateTime: '1359124971',
+    // MsgType: 'image',
+    // PicUrl: 'http://mmsns.qpic.cn/mmsns/bfc815ygvIWcaaZlEXJV7NzhmA3Y2fc4eBOxLjpPI60Q1Q6ibYicwg/0',
+    // MediaId: 'media_id',
+    // MsgId: '5837397301622104395' }
+}).voice(function(message, req, res, next) {
+    res.reply(JSON.stringify(message));
+    // message为音频内容
+    // { ToUserName: 'gh_d3e07d51b513',
+    // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
+    // CreateTime: '1359125022',
+    // MsgType: 'voice',
+    // MediaId: 'OMYnpghh8fRfzHL8obuboDN9rmLig4s0xdpoNT6a5BoFZWufbE6srbCKc_bxduzS',
+    // Format: 'amr',
+    // MsgId: '5837397520665436492' }
+}).video(function(message, req, res, next) {
+    res.reply(JSON.stringify(message));
+    // message为视频内容
+    // { ToUserName: 'gh_d3e07d51b513',
+    // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
+    // CreateTime: '1359125022',
+    // MsgType: 'video',
+    // MediaId: 'OMYnpghh8fRfzHL8obuboDN9rmLig4s0xdpoNT6a5BoFZWufbE6srbCKc_bxduzS',
+    // ThumbMediaId: 'media_id',
+    // MsgId: '5837397520665436492' }
+}).shortvideo(function(message, req, res, next) {
+    res.reply(JSON.stringify(message));
+    // message为短视频内容
+    // { ToUserName: 'gh_d3e07d51b513',
+    // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
+    // CreateTime: '1359125022',
+    // MsgType: 'shortvideo',
+    // MediaId: 'OMYnpghh8fRfzHL8obuboDN9rmLig4s0xdpoNT6a5BoFZWufbE6srbCKc_bxduzS',
+    // ThumbMediaId: 'media_id',
+    // MsgId: '5837397520665436492' }
+}).location(function(message, req, res, next) {
+    res.reply(JSON.stringify(message));
+    // message为位置内容
+    // { ToUserName: 'gh_d3e07d51b513',
+    // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
+    // CreateTime: '1359125311',
+    // MsgType: 'location',
+    // Location_X: '30.283950',
+    // Location_Y: '120.063139',
+    // Scale: '15',
+    // Label: {},
+    // MsgId: '5837398761910985062' }
+}).link(function(message, req, res, next) {
+    res.reply(JSON.stringify(message));
+    // message为链接内容
+    // { ToUserName: 'gh_d3e07d51b513',
+    // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
+    // CreateTime: '1359125022',
+    // MsgType: 'link',
+    // Title: '公众平台官网链接',
+    // Description: '公众平台官网链接',
+    // Url: 'http://1024.com/',
+    // MsgId: '5837397520665436492' }
+}).event(function(message, req, res, next) {
+    res.reply(JSON.stringify(message));
+    // message为事件内容
+    // { ToUserName: 'gh_d3e07d51b513',
+    // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
+    // CreateTime: '1359125022',
+    // MsgType: 'event',
+    // Event: 'LOCATION',
+    // Latitude: '23.137466',
+    // Longitude: '113.352425',
+    // Precision: '119.385040',
+    // MsgId: '5837397520665436492' }
+}).device_text(function(message, req, res, next) {
+    res.reply(JSON.stringify(message));
+    // message为设备文本消息内容
+    // { ToUserName: 'gh_d3e07d51b513',
+    // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
+    // CreateTime: '1359125022',
+    // MsgType: 'device_text',
+    // DeviceType: 'gh_d3e07d51b513'
+    // DeviceID: 'dev1234abcd',
+    // Content: 'd2hvc3lvdXJkYWRkeQ==',
+    // SessionID: '9394',
+    // MsgId: '5837397520665436492',
+    // OpenID: 'oPKu7jgOibOA-De4u8J2RuNKpZRw' }
+}).device_event(function(message, req, res, next) {
+    res.reply(JSON.stringify(message));
+    // message为设备事件内容
+    // { ToUserName: 'gh_d3e07d51b513',
+    // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
+    // CreateTime: '1359125022',
+    // MsgType: 'device_event',
+    // Event: 'bind'
+    // DeviceType: 'gh_d3e07d51b513'
+    // DeviceID: 'dev1234abcd',
+    // OpType : 0, //Event为subscribe_status/unsubscribe_status时存在
+    // Content: 'd2hvc3lvdXJkYWRkeQ==', //Event不为subscribe_status/unsubscribe_status时存在
+    // SessionID: '9394',
+    // MsgId: '5837397520665436492',
+    // OpenID: 'oPKu7jgOibOA-De4u8J2RuNKpZRw' }
+}))
