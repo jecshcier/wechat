@@ -4,7 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var session = require('express-session')({
+    cookie: {
+        maxAge: 1000 * 60 * 30
+    },
+    secret: 'wechat',
+    resave: true,
+    saveUninitialized: true
+});
 var index = require('./routes/index');
 var users = require('./routes/users');
 var wechatModual = require('./routes/wechat')
@@ -26,6 +33,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
+app.use(session);
 app.use(config.serverName + config.staticPathName, express.static(path.join(__dirname, 'public')));
 console.log(path.join(__dirname, 'public'))
 
