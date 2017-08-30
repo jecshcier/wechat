@@ -2,7 +2,7 @@ var config = require(process.cwd() + '/config')
 var wechat = require('wechat')
 var List = require('wechat').List;
 List.add('view', [
-  ['回复{a}查看我的性别', function (info, req, res) {
+  ['回复{七夕}查看我的性别', function (info, req, res) {
     res.reply('我是个妹纸哟');
   }],
   ['\n回复{b}查看我的年龄', function (info, req, res) {
