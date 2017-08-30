@@ -12,7 +12,7 @@ module.exports = wechat(config.wechatConfig, function(req, res, next) {
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     } else if(message.Content === "数据测试"){
-        res.reply(message);
+        res.reply(JSON.stringify(message));
     }else {
 
     }
