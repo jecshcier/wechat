@@ -3,32 +3,36 @@ const wechat = require('wechat')
 const List = require('wechat').List;
 let userData = {};
 List.add('view', [
-    ['您好！阿C很高兴为您服务！\n\n-回复 {七夕} 查看 ->\n《测测你七夕的对象是谁》\n', function(info, req, res) {
-        res.reply([{
+    ['您好！阿C很高兴为您服务!😳😳😳😳\n\n-回复 {七夕} 查看 ->\n《测测你七夕的对象是谁》\n', function(info, req, res) {
+        res.nowait([{
             title: '测测你七夕的对象是谁？',
             description: '来玩吧！',
             picurl: config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png',
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     }],
-    ['\n-回复 {数据测试} 查看测试数据', function(info, req, res) {
-        res.reply(JSON.stringify(info));
+    ['\n-回复 {数据测试} 查看测试数据📖', function(info, req, res) {
+        res.nowait(JSON.stringify(info));
     }],
-    ['\n-回复 {数字} 来获取你今天的幸运数字', function(info, req, res) {
+    ['\n-回复 {数字} 来获取你今天的幸运色🍀', function(info, req, res) {
         let today = new Date().toLocaleDateString();
+        let data = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+        let color = '#'
+        for (var i = 0; i < 6; i++) {
+            color += data[parseInt(Math.random() * data.length)];
+        }
         if (!userData.hasOwnProperty(info.FromUserName)) {
             userData[info.FromUserName] = {}
             userData[info.FromUserName].updateTime = today;
-            userData[info.FromUserName].fortunNum = parseInt(Math.random() * 10);
+            userData[info.FromUserName].fortunColor = color
         }
         else {
             if (userData[info.FromUserName].updateTime !== today) {
                 userData[info.FromUserName].updateTime = today;
-                userData[info.FromUserName].fortunNum = parseInt(Math.random() * 10);
+                userData[info.FromUserName].fortunColor = color
             }
         }
-        res.reply(userData[info.FromUserName].fortunNum);
-        console.log(userData)
+        res.nowait(userData[info.FromUserName].fortunColor);
     }]
 ]);
 module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
