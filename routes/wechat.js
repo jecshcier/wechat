@@ -1,18 +1,18 @@
-var config = process.cwd() + '/config'
+var config = require(process.cwd() + '/config')
 var wechat = require('wechat')
-
 module.exports = wechat(config.wechatConfig, function(req, res, next) {
     // 微信输入信息都在req.weixin上
+
     var message = req.weixin;
     if (message.Content === "七夕") {
         res.reply([{
             title: '测测你七夕的对象是谁？',
             description: '来玩吧！',
-            picurl: "http://cshayne.ga/wechat/source/images/1.png",
+            picurl: config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png',
             url: 'http://cshayne.ga/77source/77.html'
         }]);
     } else {
-        res.reply(JSON.stringify(message));
+        res.reply(config.serverDomain);
     }
     // if (message.FromUserName === 'diaosi') {
     //     // 回复屌丝(普通回复)
