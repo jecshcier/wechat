@@ -25,7 +25,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
         res.reply(JSON.stringify(message));
     } else if (message.Content === "菜单测试") {
         console.log(List)
-        // res.wait('view');
+        res.wait('view');
     } else {
         res.reply("说的什么玩意？");
     }
