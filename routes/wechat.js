@@ -5,10 +5,10 @@ List.add('view', [
   ['回复{a}查看我的性别', function (info, req, res) {
     res.reply('我是个妹纸哟');
   }],
-  ['回复{b}查看我的年龄', function (info, req, res) {
+  ['\n回复{b}查看我的年龄', function (info, req, res) {
     res.reply('我今年18岁');
   }],
-  ['回复{c}查看我的性取向', '这样的事情怎么好意思告诉你啦- -']
+  ['\n回复{c}查看我的性取向', '这样的事情怎么好意思告诉你啦- -']
 ]);
 module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
     // 微信输入信息都在req.weixin上
