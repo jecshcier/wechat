@@ -14,7 +14,7 @@ List.add('view', [
     ['\n-回复 {数据测试} 查看测试数据📖', function(info, req, res) {
         res.nowait(JSON.stringify(info));
     }],
-    ['\n-回复 {数字} 来获取你今天的幸运色🍀', function(info, req, res) {
+    ['\n-回复 {幸运色} 来获取你今天的幸运色号🍀', function(info, req, res) {
         let today = new Date().toLocaleDateString();
         let data = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
         let color = '#'
