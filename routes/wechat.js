@@ -19,7 +19,7 @@ List.add('view', [
   // ['\n-回复 {数据测试} 查看测试数据📖', function(info, req, res) {
   //     res.nowait(JSON.stringify(info));
   // }],
-  ['您好！阿C很高兴为您服务!😳😳😳😳\n\n-回复 {幸运色} 来获取你今天的幸运色号🍀', function(info, req, res) {
+  ['您好！阿C很高兴为您服务!😳😳😳😳\n\n-回复 {幸运色} 来获取你今天的幸运色号🍀\n\n当然，您也可以跟我的客服小琳琳聊天哦！', function(info, req, res) {
     let today = new Date().toLocaleDateString();
     let data = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
     let color = '#'
