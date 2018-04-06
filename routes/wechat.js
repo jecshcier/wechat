@@ -2,9 +2,11 @@ const config = require(process.cwd() + '/config')
 const wechat = require('wechat')
 const List = require('wechat').List;
 const sendMess = require('./robot')
-
+const words = config.keyWords
 
 let userData = {};
+
+
 List.add('view', [
   // ['您好！阿C很高兴为您服务!😳😳😳😳\n\n-回复 {七夕} 查看 ->\n《测测你七夕的对象是谁》\n', function(info, req, res) {
   //     res.nowait([{
@@ -40,7 +42,13 @@ List.add('view', [
 module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
   // 微信输入信息都在req.weixin上
   // res.wait('view');
-  sendMess(message.Content,message.FromUserName).then((result) => {
+
+  if (words.indexOf(message.Content) !== -1) {
+    res.wait('view');
+    return;
+  }
+
+  sendMess(message.Content, message.FromUserName).then((result) => {
       if (result.flag) {
         let mess = result.data[0]
         if (mess.resultType === "text") {
