@@ -53,12 +53,18 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
         // {"intent":{"code":4200}}
         console.log(result)
         if (result.data.results) {
-          let mess = result.data.results[0]
-          if (mess.resultType === "text") {
-            res.reply(mess.values.text);
-          } else if (mess.resultType === "image") {
-            res.reply(mess.values.image);
+          let mess = result.data.results
+          let content = ''
+          for (var i = 0; i < mess.length; i++) {
+            if (mess.resultType === "text") {
+              content += mess.values.text
+            } else if (mess.resultType === "image") {
+              content += mess.values.image
+            } else if (mess.resultType === "url") {
+              content += mess.values.url
+            }
           }
+          res.reply(content);
         } else {
           // api调用次数使用完毕
           if (result.data.intent.code === 4003) {
