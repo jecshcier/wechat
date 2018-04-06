@@ -50,16 +50,27 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
 
   sendMess(message.Content, message.FromUserName).then((result) => {
       if (result.flag) {
-        let mess = result.data[0]
-        if (mess.resultType === "text") {
-          res.reply(mess.values.text);
-        } else if (mess.resultType === "image") {
-          res.reply(mess.values.image);
+        // {"intent":{"code":4200}}
+        if (result.data.intent.code == 10004) {
+          let mess = result.data[0]
+          if (mess.resultType === "text") {
+            res.reply(mess.values.text);
+          } else if (mess.resultType === "image") {
+            res.reply(mess.values.image);
+          }
+        } else {
+          // api调用次数使用完毕
+          if (result.data.intent.code === 4003) {
+            res.reply("机器人有点累啦，让她休息一会吧！");
+          } else {
+            res.reply("不好意思哦，机器人出现了故障。。。");
+          }
         }
+
       }
     }).catch((e) => {
       console.log(e.message)
-      res.reply("机器人出现了故障。。。");
+      res.reply("不好意思哦，机器人出现了故障。。。");
     })
     // console.log(res)
     // var message = req.weixin;
