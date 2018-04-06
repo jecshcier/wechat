@@ -51,6 +51,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
   sendMess(message.Content, message.FromUserName).then((result) => {
       if (result.flag) {
         // {"intent":{"code":4200}}
+        console.log(result)
         if (result.data.intent.code == 10004) {
           let mess = result.data[0]
           if (mess.resultType === "text") {
