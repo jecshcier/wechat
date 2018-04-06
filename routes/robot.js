@@ -19,6 +19,8 @@ const postReq = (url, data) => {
         console.log("错误")
         reject(info)
       } else {
+        console.log(body)
+        console.log(typeof body)
         if (body) {
           let result
           try {
