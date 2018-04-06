@@ -109,7 +109,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     // Format: 'amr',
     // MsgId: '5837397520665436492' }
 }).video(function(message, req, res, next) {
-    // res.reply("说的什么玩意？");
+    res.reply("说的什么玩意？");
     // message为视频内容
     // { ToUserName: 'gh_d3e07d51b513',
     // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
@@ -119,7 +119,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     // ThumbMediaId: 'media_id',
     // MsgId: '5837397520665436492' }
 }).shortvideo(function(message, req, res, next) {
-    // res.reply("说的什么玩意？");
+    res.reply("说的什么玩意？");
     // message为短视频内容
     // { ToUserName: 'gh_d3e07d51b513',
     // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
@@ -129,7 +129,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     // ThumbMediaId: 'media_id',
     // MsgId: '5837397520665436492' }
 }).location(function(message, req, res, next) {
-    // res.reply("说的什么玩意？");
+    res.reply("说的什么玩意？");
     // message为位置内容
     // { ToUserName: 'gh_d3e07d51b513',
     // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
@@ -141,7 +141,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     // Label: {},
     // MsgId: '5837398761910985062' }
 }).link(function(message, req, res, next) {
-    // res.reply("说的什么玩意？");
+    res.reply("说的什么玩意？");
     // message为链接内容
     // { ToUserName: 'gh_d3e07d51b513',
     // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
@@ -152,7 +152,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     // Url: 'http://1024.com/',
     // MsgId: '5837397520665436492' }
 }).event(function(message, req, res, next) {
-    res.reply("你好");
+    res.wait('view');
     // message为事件内容
     // { ToUserName: 'gh_d3e07d51b513',
     // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
@@ -164,7 +164,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     // Precision: '119.385040',
     // MsgId: '5837397520665436492' }
 }).device_text(function(message, req, res, next) {
-    // res.reply("说的什么玩意？");
+    res.reply("说的什么玩意？");
     // message为设备文本消息内容
     // { ToUserName: 'gh_d3e07d51b513',
     // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
@@ -177,7 +177,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     // MsgId: '5837397520665436492',
     // OpenID: 'oPKu7jgOibOA-De4u8J2RuNKpZRw' }
 }).device_event(function(message, req, res, next) {
-    // res.reply("说的什么玩意？");
+    res.reply("说的什么玩意？");
     // message为设备事件内容
     // { ToUserName: 'gh_d3e07d51b513',
     // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
