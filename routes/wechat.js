@@ -56,6 +56,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
           let mess = result.data.results
           let content = ''
           for (var i = 0; i < mess.length; i++) {
+            console.log(mess[i])
             if (mess[i].resultType === "text") {
               content += mess[i].values.text
             } else if (mess[i].resultType === "image") {
