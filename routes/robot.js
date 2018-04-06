@@ -19,6 +19,7 @@ const postReq = (url, data) => {
         console.log("错误")
         reject(info)
       } else {
+        console.log(body)
         if (typeof body === "object" && body) {
           info.flag = true
           info.message = "okok"
