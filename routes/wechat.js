@@ -46,7 +46,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
         if (mess.resultType === "text") {
           res.reply(mess.values.text);
         } else if (mess.resultType === "image") {
-          res.reply(mess.value.image);
+          res.reply(mess.values.image);
         }
       }
     }).catch((e) => {
