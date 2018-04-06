@@ -20,6 +20,8 @@ const postReq = (url, data) => {
         reject(info)
       } else {
         console.log(body)
+        console.log(typeof body)
+        console.log(typeof body === "object")
         if (typeof body === "object" && body) {
           info.flag = true
           info.message = "okok"
