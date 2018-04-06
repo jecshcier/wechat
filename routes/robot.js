@@ -52,7 +52,7 @@ const sendMess = (message, userID) => {
     },
     "userInfo": {
       "apiKey": robot.apiKey[userData[userID]],
-      "userId": userID.replace(/[\\p{P}+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]/g,'')
+      "userId": userID.replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g,"")
     }
   })
 
