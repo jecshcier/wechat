@@ -40,7 +40,7 @@ List.add('view', [
 module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
   // 微信输入信息都在req.weixin上
   // res.wait('view');
-  sendMess(message.Content).then((result) => {
+  sendMess(message.Content,userid,message.FromUserName).then((result) => {
       if (result.flag) {
         let mess = result.data[0]
         if (mess.resultType === "text") {

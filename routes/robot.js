@@ -34,7 +34,8 @@ const postReq = (url, data) => {
   })
 }
 
-const sendMess = (message) => {
+const sendMess = (message,userID) => {
+  console.log(userID)
   return postReq(robot.url, {
     "reqType": 0,
     "perception": {
@@ -47,7 +48,7 @@ const sendMess = (message) => {
     },
     "userInfo": {
       "apiKey": robot.apiKey,
-      "userId": robot.userId
+      "userId": userID
     }
   })
 }
