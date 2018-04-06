@@ -19,23 +19,19 @@ const postReq = (url, data) => {
         console.log("错误")
         reject(info)
       } else {
-        console.log(body)
         if (body) {
-          if (typeof body !== 'object') {
-            info.message = '404'
+          let result
+          try {
+            result = JSON.parse(body)
+          } catch (e) {
+            info.message = e
             reject(info)
             return
           }
-          if (body.flag) {
-            info.flag = true
-            info.message = body.message
-            info.data = body.data
-            resolve(info)
-          } else {
-            info.message = body.message
-            info.data = body.data
-            reject(info)
-          }
+          info.flag = true
+          info.message = body.message
+          info.data = result.results
+          resolve(info)
         } else {
           info.message = '500'
           reject(info)
@@ -46,7 +42,6 @@ const postReq = (url, data) => {
 }
 
 const sendMess = () => {
-  console.log('start')
   return postReq(robot.url, {
     "reqType": 0,
     "perception": {

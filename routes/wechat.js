@@ -44,7 +44,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     sendMess().then((result)=>{
         console.log(result)
     }).catch((e)=>{
-
+        console.log(e)
     })
     // console.log(res)
     // var message = req.weixin;
