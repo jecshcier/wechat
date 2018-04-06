@@ -47,7 +47,6 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     res.wait('view');
     return;
   }
-  console.log(message)
   sendMess(message.Content, message.FromUserName).then((result) => {
       if (result.flag) {
         // {"intent":{"code":4200}}
