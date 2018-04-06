@@ -42,7 +42,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
   // res.wait('view');
   sendMess().then((result) => {
       if (result.flag) {
-        let mess = data[0]
+        let mess = result.data[0]
         if (mess.resultType === "text") {
           res.reply(mess.values.text);
         } else if (mess.resultType === "image") {
