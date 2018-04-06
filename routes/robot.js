@@ -20,10 +20,9 @@ const postReq = (url, data) => {
         reject(info)
       } else {
         if (typeof body === "object" && body) {
-          let result
           info.flag = true
           info.message = body.message
-          info.data = result.results
+          info.data = body.results
           resolve(info)
         } else {
           info.message = '500'
