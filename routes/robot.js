@@ -19,6 +19,7 @@ const postReq = (url, data) => {
         console.log("错误")
         reject(info)
       } else {
+        console.log(body)
         if (body) {
           if (typeof body !== 'object') {
             info.message = '404'
@@ -45,6 +46,7 @@ const postReq = (url, data) => {
 }
 
 const sendMess = () => {
+  console.log('start')
   return postReq(robot.url, {
     "reqType": 0,
     "perception": {
