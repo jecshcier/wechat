@@ -56,12 +56,12 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
           let mess = result.data.results
           let content = ''
           for (var i = 0; i < mess.length; i++) {
-            if (mess.resultType === "text") {
-              content += mess.values.text
-            } else if (mess.resultType === "image") {
-              content += mess.values.image
-            } else if (mess.resultType === "url") {
-              content += mess.values.url
+            if (mess[i].resultType === "text") {
+              content += mess[i].values.text
+            } else if (mess[i].resultType === "image") {
+              content += mess[i].values.image
+            } else if (mess[i].resultType === "url") {
+              content += mess[i].values.url
             }
           }
           res.reply(content);
