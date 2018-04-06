@@ -45,7 +45,7 @@ const postReq = (url, data) => {
 }
 
 const sendMess = () => {
-  postReq(robot.url, {
+  return postReq(robot.url, {
     "reqType": 0,
     "perception": {
       "inputText": {
