@@ -34,12 +34,12 @@ const postReq = (url, data) => {
   })
 }
 
-const sendMess = () => {
+const sendMess = (message) => {
   return postReq(robot.url, {
     "reqType": 0,
     "perception": {
       "inputText": {
-        "text": "我帅不帅"
+        "text": message
       },
       "inputImage": {
         "url": ""
