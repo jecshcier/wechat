@@ -21,7 +21,7 @@ const postReq = (url, data) => {
       } else {
         if (typeof body === "object" && body) {
           info.flag = true
-          info.message = body.message
+          info.message = "okok"
           info.data = body.results
           resolve(info)
         } else {
