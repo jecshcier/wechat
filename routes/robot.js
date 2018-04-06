@@ -19,10 +19,8 @@ const postReq = (url, data) => {
         console.log("错误")
         reject(info)
       } else {
-        console.log(body)
-        console.log(typeof body)
-        console.log(typeof body === "object")
         if (typeof body === "object" && body) {
+          console.log("ok")
           info.flag = true
           info.message = "okok"
           info.data = body.results

@@ -50,6 +50,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
         }
       }
     }).catch((e) => {
+      console.log(e.message)
       res.reply("机器人出现了故障。。。");
     })
     // console.log(res)
