@@ -1,7 +1,7 @@
 const config = require(process.cwd() + '/config')
 const wechat = require('wechat')
 const List = require('wechat').List;
-const sendMess = require('robot').sendMess
+const sendMess = require('./robot').sendMess
 
 
 
