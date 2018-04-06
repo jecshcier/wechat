@@ -4,7 +4,7 @@
     "wechatConfig":{
         "token": "jecshcierWeixin",
         "appid": "wx0fd1c0b003749f35",
-        "encodingAESKey": "FFmeKxDXTaa1b4Os62hbZgl9yQFPDiM0ZDzFNtN3VaQ",
+        "encodingAESKey": "e2zUHo3OM3R5JUaDTTacfEcssTyhNLr2xcxh5cirUvp",
         "checkSignature": true
     },
     "robotConfig":{
