@@ -41,7 +41,7 @@ List.add('view', [
 ]);
 module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
     // 微信输入信息都在req.weixin上
-    // res.wait('view');
+    res.wait('view');
     // console.log(res)
     // var message = req.weixin;
     // if (message.Content === "七夕") {
@@ -141,7 +141,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     // Label: {},
     // MsgId: '5837398761910985062' }
 }).link(function(message, req, res, next) {
-    // res.reply("说的什么玩意？");
+    res.reply("说的什么玩意？");
     // message为链接内容
     // { ToUserName: 'gh_d3e07d51b513',
     // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
@@ -152,7 +152,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
     // Url: 'http://1024.com/',
     // MsgId: '5837397520665436492' }
 }).event(function(message, req, res, next) {
-    // res.reply("说的什么玩意？");
+    res.reply("说的什么玩意？");
     // message为事件内容
     // { ToUserName: 'gh_d3e07d51b513',
     // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
