@@ -53,7 +53,7 @@ module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, 
         // {"intent":{"code":4200}}
         console.log(result)
         if (result.data.intent.code == 10004) {
-          let mess = result.data[0]
+          let mess = result.data.results[0]
           if (mess.resultType === "text") {
             res.reply(mess.values.text);
           } else if (mess.resultType === "image") {
