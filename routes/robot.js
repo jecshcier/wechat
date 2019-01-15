@@ -17,7 +17,7 @@ const postReq = (url, data) => {
     }, function optionalCallback(err, httpResponse, body) {
       if (err) {
         info.message = err
-        console.log("错误")
+        console.log(err)
         reject(info)
       } else {
         if (typeof body === "object" && body) {
