@@ -20,7 +20,7 @@ List.add('view', [
   // ['\n-回复 {数据测试} 查看测试数据📖', function(info, req, res) {
   //     res.nowait(JSON.stringify(info));
   // }],
-  ['您好！阿C很高兴为您服务!😳😳😳😳\n\n-下面是阿C给你准备的功能哦！\n\n- <a href="https://cshayne.cn/static/demo/race.html">{无聊的赛马游戏}</a>', function(info, req, res) {
+  ['您好！阿C很高兴为您服务!😳😳😳😳，下面是阿C给你准备的功能哦！\n\n- <a href="https://cshayne.cn/static/demo/race.html">{无聊的赛马游戏}</a>', function(info, req, res) {
     res.nowait('哦！');
   }],
   ['- <a href="https://cshayne.cn/static/demo/shoot.html">{无聊的打气球游戏}</a>', function(info, req, res) {
