@@ -18,7 +18,7 @@ var wechatModual = require('./routes/wechat')
 var config = require('./config')
 
 var app = express();
-var sourcePath = config.sourceRealPath || process.cwd() + '/public/resources'
+var sourcePath = config.sourceRealPath || path.join(__dirname, '/public/resources')
 
 
 // view engine setup

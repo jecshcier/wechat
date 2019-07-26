@@ -1,4 +1,5 @@
-const config = require(process.cwd() + '/config')
+const path = require('path')
+const config = require(path.join(__dirname, '../config'))
 const wechat = require('wechat')
 const List = require('wechat').List;
 const sendMess = require('./robot')
@@ -19,112 +20,97 @@ List.add('view', [
   // ['\n-回复 {数据测试} 查看测试数据📖', function(info, req, res) {
   //     res.nowait(JSON.stringify(info));
   // }],
-  ['您好！阿C很高兴为您服务!😳😳😳😳\n\n-回复 {幸运色} 来获取你今天的幸运色号🍀\n\n当然，您也可以跟我的客服小丢丢聊天哦！', function(info, req, res) {
-    let today = new Date().toLocaleDateString();
-    let data = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
-    let color = '#'
-    for (var i = 0; i < 6; i++) {
-      color += data[parseInt(Math.random() * data.length)];
-    }
-    if (!userData.hasOwnProperty(info.FromUserName)) {
-      userData[info.FromUserName] = {}
-      userData[info.FromUserName].updateTime = today;
-      userData[info.FromUserName].fortunColor = color
-    } else {
-      if (userData[info.FromUserName].updateTime !== today) {
-        userData[info.FromUserName].updateTime = today;
-        userData[info.FromUserName].fortunColor = color
-      }
-    }
-    res.nowait(userData[info.FromUserName].fortunColor);
+  ['您好！阿C很高兴为您服务!😳😳😳😳\n\n-下面是阿C给你准备的功能哦！\n\n - <a href="https://cshayne.cn/static/demo/race.html">{赛马游戏}</a>', function(info, req, res) {
+    res.nowait('哦！');
   }]
 ]);
 module.exports = wechat(config.wechatConfig, wechat.text(function(message, req, res, next) {
   // 微信输入信息都在req.weixin上
   // res.wait('view');
+  console.log(message)
+  // if (words.indexOf(message.Content) !== -1) {
+  res.wait('view');
+  // return;
+  // }
+  // 图灵机器人已不可用
+  // sendMess(message.Content, message.FromUserName).then((result) => {
+  //   if (result.flag) {
+  //     // {"intent":{"code":4200}}
+  //     console.log(result)
+  //     if (result.data.results) {
+  //       let mess = result.data.results
+  //       let content = ''
+  //       for (var i = 0; i < mess.length; i++) {
+  //         console.log(mess[i])
+  //         if (mess[i].resultType === "text") {
+  //           content += mess[i].values.text + '\n'
+  //         } else if (mess[i].resultType === "image") {
+  //           content += mess[i].values.image + '\n'
+  //         } else if (mess[i].resultType === "url") {
+  //           content += mess[i].values.url + '\n'
+  //         }
+  //       }
+  //       res.reply(content);
+  //     } else {
+  //       // api调用次数使用完毕
+  //       if (result.data.intent.code === 4003) {
+  //         res.reply("机器人有点累啦，让她休息一会吧！");
+  //       } else {
+  //         res.reply("不好意思哦，机器人出现了故障。。。");
+  //       }
+  //     }
 
-  if (words.indexOf(message.Content) !== -1) {
-    res.wait('view');
-    return;
-  }
-  sendMess(message.Content, message.FromUserName).then((result) => {
-      if (result.flag) {
-        // {"intent":{"code":4200}}
-        console.log(result)
-        if (result.data.results) {
-          let mess = result.data.results
-          let content = ''
-          for (var i = 0; i < mess.length; i++) {
-            console.log(mess[i])
-            if (mess[i].resultType === "text") {
-              content += mess[i].values.text + '\n'
-            } else if (mess[i].resultType === "image") {
-              content += mess[i].values.image + '\n'
-            } else if (mess[i].resultType === "url") {
-              content += mess[i].values.url + '\n'
-            }
-          }
-          res.reply(content);
-        } else {
-          // api调用次数使用完毕
-          if (result.data.intent.code === 4003) {
-            res.reply("机器人有点累啦，让她休息一会吧！");
-          } else {
-            res.reply("不好意思哦，机器人出现了故障。。。");
-          }
-        }
-
-      }
-    }).catch((e) => {
-      console.log(e.message)
-      res.reply("不好意思哦，机器人出现了故障。。。");
-    })
-    // console.log(res)
-    // var message = req.weixin;
-    // if (message.Content === "七夕") {
-    //     res.reply([{
-    //         title: '测测你七夕的对象是谁？',
-    //         description: '来玩吧！',
-    //         picurl: config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png',
-    //         url: 'http://cshayne.ga/77source/77.html'
-    //     }]);
-    // } else if (message.Content === "数据测试") {
-    //     res.reply(JSON.stringify(message));
-    // } else if (message.Content === "菜单测试") {
-    //
-    // } else {
-    //     res.reply("说的什么玩意？");
-    // }
-    // if (message.FromUserName === 'diaosi') {
-    //     // 回复屌丝(普通回复)
-    //     res.reply('hehe');
-    // } else if (message.FromUserName === 'text') {
-    //     //你也可以这样回复text类型的信息
-    //     res.reply({
-    //         content: 'text object',
-    //         type: 'text'
-    //     });
-    // } else if (message.FromUserName === 'hehe') {
-    //     // 回复一段音乐
-    //     res.reply({
-    //         type: "music",
-    //         content: {
-    //             title: "来段音乐吧",
-    //             description: "一无所有",
-    //             musicUrl: "http://mp3.com/xx.mp3",
-    //             hqMusicUrl: "http://mp3.com/xx.mp3",
-    //             thumbMediaId: "thisThumbMediaId"
-    //         }
-    //     });
-    // } else {
-    //     // 回复高富帅(图文回复)
-    //     res.reply([{
-    //         title: '你来我家接我吧',
-    //         description: '这是女神与高富帅之间的对话',
-    //         picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
-    //         url: 'http://nodeapi.cloudfoundry.com/'
-    //     }]);
-    // }
+  //   }
+  // }).catch((e) => {
+  //   console.log(e.message)
+  //   res.reply("不好意思哦，机器人出现了故障。。。");
+  // })
+  // console.log(res)
+  // var message = req.weixin;
+  // if (message.Content === "七夕") {
+  //     res.reply([{
+  //         title: '测测你七夕的对象是谁？',
+  //         description: '来玩吧！',
+  //         picurl: config.serverDomain + config.serverName + config.sourcePathName + '/images/1.png',
+  //         url: 'http://cshayne.ga/77source/77.html'
+  //     }]);
+  // } else if (message.Content === "数据测试") {
+  //     res.reply(JSON.stringify(message));
+  // } else if (message.Content === "菜单测试") {
+  //
+  // } else {
+  //     res.reply("说的什么玩意？");
+  // }
+  // if (message.FromUserName === 'diaosi') {
+  //     // 回复屌丝(普通回复)
+  //     res.reply('hehe');
+  // } else if (message.FromUserName === 'text') {
+  //     //你也可以这样回复text类型的信息
+  //     res.reply({
+  //         content: 'text object',
+  //         type: 'text'
+  //     });
+  // } else if (message.FromUserName === 'hehe') {
+  //     // 回复一段音乐
+  //     res.reply({
+  //         type: "music",
+  //         content: {
+  //             title: "来段音乐吧",
+  //             description: "一无所有",
+  //             musicUrl: "http://mp3.com/xx.mp3",
+  //             hqMusicUrl: "http://mp3.com/xx.mp3",
+  //             thumbMediaId: "thisThumbMediaId"
+  //         }
+  //     });
+  // } else {
+  //     // 回复高富帅(图文回复)
+  //     res.reply([{
+  //         title: '你来我家接我吧',
+  //         description: '这是女神与高富帅之间的对话',
+  //         picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
+  //         url: 'http://nodeapi.cloudfoundry.com/'
+  //     }]);
+  // }
 }).image(function(message, req, res, next) {
   res.reply("说的什么玩意？");
   // message为图片内容
